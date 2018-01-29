@@ -56,7 +56,6 @@ Instructions:
       if (!response.ok) {
         throw Error(response.statusText ? response.statusText : 'Unknown network error');
       }
-      console.log(response.json());
       return response.json();
     });
   }
