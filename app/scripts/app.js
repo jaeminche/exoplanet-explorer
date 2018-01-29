@@ -31,7 +31,11 @@ Instructions:
     var pT = document.createElement('planet-thumb');
     for (var d in data) {
       pT[d] = data[d];
+      // console.log(d);
+      // console.log(pT[d]);
+      // console.log(data[d]);
     }
+    // console.log(pT);
     home.appendChild(pT);
   }
 
@@ -66,10 +70,21 @@ Instructions:
      */
     getJSON('../data/earth-like-results.json')
     .then(function(response) {
-      console.log(response);
+      // console.log(response);
+      addSearchHeader(response.query);
+      // console.log(response.results[0]);
+      // console.log(getJSON(response.results[0]));
+      return getJSON(response.results[0]);
     })
     .catch(function() {
-      // body...
+      throw Error('Search Request Error');
     })
+    .then(function(response) {
+      createPlanetThumb(response);
+    })
+    .catch(function(error) {
+      addSearchHeader('unknown');
+      console.log(error);
+    });
   });
 })(document);
