@@ -52,10 +52,11 @@ Instructions:
     Your code goes here!
      */
     return get(url).then(function(response) {
+      console.log(response);
       if (!response.ok) {
         throw Error(response.statusText ? response.statusText : 'Unknown network error');
       }
-
+      console.log(response.json());
       return response.json();
     });
   }
