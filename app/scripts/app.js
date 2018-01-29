@@ -44,6 +44,7 @@ Instructions:
           // It worked!
           // You'll want to resolve with the data from req.response
           resolve(req.response);
+          console.log(req);
         } else {
           // It failed :(
           // Be nice and reject with req.statusText
@@ -56,7 +57,6 @@ Instructions:
         reject(Error('Network Error'));
       };
       req.send();
-
     });
   }
 
@@ -69,11 +69,10 @@ Instructions:
      */
     get('../data/earth-like-results.json')
     .then(function(response) {
-      // body...
       addSearchHeader(response);
+      console.log(response);
     })
     .catch(function(error) {
-      // body...
       addSearchHeader('unknown');
       console.log(error);
     });
